@@ -57,8 +57,8 @@
 	}
 	
 	function onDeleteTask(uuid) {
-		delete tasks[uuid];	
-		tasks = tasks; // Delete on object does not trigger update, forcing with self-assignment
+		tasks[uuid]; // Surprise! Delete on object does not trigger an update
+    tasks = tasks; // Using as a workaround. See: https://github.com/sveltejs/svelte/issues/3211
 	}
 </script>
 
