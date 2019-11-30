@@ -61,7 +61,7 @@ Compiled:
 
 ## Second TODO app in Svelte ("rev2")
 
-Create a writable store to hold state
+Create a writable store to hold state (https://svelte.dev/docs#writable)
 
     import { writable, derived } from 'svelte/store'
 
@@ -70,3 +70,18 @@ Create a writable store to hold state
       { '05312312', { name: 'Change winter tires', isDone: false } },
       { '12319823', { name: 'Plough snow', isDone: false } }
     )
+
+## Updating store
+
+Immer-style updates with `update`:
+
+Mutate tasks object inside callback and returns new value to be set in store
+
+    tasks.update((tasks) => {
+      tasks[uuid] = task
+      return tasks
+    })
+
+There is also `set`
+
+Stores are immutable outside these operations
