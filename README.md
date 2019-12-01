@@ -85,3 +85,40 @@ Mutate tasks object inside callback and returns new value to be set in store
 There is also `set`
 
 Stores are immutable outside these operations
+
+## Observables support?
+
+> As of 3.1.0, Svelte supports RxJS (and compatible, including
+> the proposed TC39 standard) observables out of the box
+>
+> - https://twitter.com/sveltejs/status/1121762491917328384
+
+Also:
+
+> ...To meet the "store contract", your observable needs to emit its
+> first value immediately. If you have an observable chain that may
+> take a while to emit its first value, you'll typically need a "startWith"
+> or "publishReplay(1)" or similar depending on the situation."
+> 
+> - https://github.com/sveltejs/svelte/issues/2549#issuecomment-524415845
+
+## Example: RxJS Store
+
+https://svelte.dev/repl/cfd3d3ba0534483481c91f2fc68e390f?version=3.16.0
+
+    <script>
+      // Adapted from: https://svelte.dev/repl/51144b5ef95b53d14aede232d58aa14b?version=3.1.0
+      import {ajax} from "rxjs/ajax"
+      import {pluck, startWith} from "rxjs/operators"
+      
+      const users$ = ajax(`https://api.github.com/users?per_page=5`).pipe(
+        pluck("response"),
+        startWith([]) // Required to fulfill Store's contract 
+      )
+    </script>
+
+    {#each $users$ as user}
+      <div>
+        {user.login}
+      </div>
+    {/each}
