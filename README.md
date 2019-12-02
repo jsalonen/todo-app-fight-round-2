@@ -1,6 +1,4 @@
-# TODO App Fight Round 2
-
-## Svelte
+# TODO App Fight Round 2 - Svelte
 
 Second round of TODO app fight, held at Gofore Jyväskylä 2.12.2019
 
