@@ -42,7 +42,12 @@
   // Everytime tasks object changes, this reactive statement
   // is updated immediately before next component render
   // See: https://svelte.dev/docs#3_$_marks_a_statement_as_reactive
-  $: taskEntries = Object.entries(tasks)
+  $: filteredTaskEntries =
+    Object
+      .entries(tasks)
+      .filter(([_id, { name }]) => (
+        name.toLowerCase().match(taskFilterText.toLowerCase())
+      ))
 
   function addTask(name) {
     tasks[uuid()] = {
@@ -63,11 +68,18 @@
 </script>
 
 <p>
-  Found {taskEntries.length} tasks
+  <input
+    placeholder="Search"
+    type="text"
+    size="40"
+    bind:value={taskFilterText} />
+</p>
+<p>
+  Found {filteredTaskEntries.length} tasks
 </p>
 
 <ul>
-  {#each Object.entries(tasks) as [uuid, item]}
+  {#each filteredTaskEntries as [uuid, item]}
     <li key={uuid}>
       <span>
         <span>{item.name}</span>
