@@ -13,8 +13,9 @@ Second round of TODO app fight, held at Gofore Jyväskylä 2.12.2019
 
 ## First TODO app in Svelte ("rev1")
 
+**DEMO: https://svelte.dev/repl/fdf996882cba49fa8f1120dbe24cb217?version=3.16.0**
+
 - Started by hacking with Svelte REPL (https://svelte.dev/repl/)
-- Original at https://svelte.dev/repl/fdf996882cba49fa8f1120dbe24cb217?version=3.16.0
 
 ## State
 
