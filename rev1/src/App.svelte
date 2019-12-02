@@ -24,7 +24,7 @@
       id: uuid(),
       name: n,
       isDone: false
-    }))
+    }));
 
   // Insert server-originated tasks with a small delay
   setTimeout(() => {
@@ -47,7 +47,7 @@
       .entries(tasks)
       .filter(([_id, { name }]) => (
         name.toLowerCase().match(taskFilterText.toLowerCase())
-      ))
+      ));
 
   function addTask(name) {
     tasks[uuid()] = {
