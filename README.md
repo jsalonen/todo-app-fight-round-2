@@ -64,6 +64,10 @@ Compiled:
 
 ## Second TODO app in Svelte ("rev2")
 
+**DEMO: https://svelte.dev/repl/ade0cc36f4b94a8c926ee3583a983d08?version=3.16.0**
+
+## Creating a Svelte store
+
 Create a writable store to hold state (https://svelte.dev/docs#writable)
 
     import { writable, derived } from 'svelte/store'
